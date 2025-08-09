@@ -1,69 +1,29 @@
-# React + TypeScript + Vite
+# 🖨 Thermal Task Printer – ESC/POS Ticket Printer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive **React + Tailwind** web app for creating, managing, and printing JIRA-style tasks directly to **ESC/POS thermal printers** over USB or Bluetooth using the **Web Serial API**.
 
-Currently, two official plugins are available:
+## ✨ Features
+- 📝 **Task Management Board** – priorities, statuses, assignees, tags, and due dates  
+- 🔍 **Search & Filter** – quickly find tasks by keyword, priority, or status  
+- 🖨 **Direct ESC/POS Printing** – 58 mm or 80 mm printers (RawBT-style)  
+- ⚡ **No Server Required** – runs entirely in the browser with Web Serial support  
+- 💾 **Offline Persistence** – tasks saved in `localStorage`  
+- 🎨 **Clean, Responsive UI** – powered by Tailwind CSS  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Getting Started
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 1. Prerequisites
+- [Node.js LTS](https://nodejs.org/) (v18 or newer)
+- A **Chromium-based browser** (Chrome, Edge, Brave) with [Web Serial API](https://developer.chrome.com/articles/serial/) enabled
+- An **ESC/POS thermal printer** with USB or Bluetooth Serial (SPP) support
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 2. Clone and Install
+```bash
+git clone https://github.com/yourusername/thermal-task-printer.git
+cd thermal-task-printer
+npm install
