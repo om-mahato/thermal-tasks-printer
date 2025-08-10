@@ -1,16 +1,4 @@
-// Fallback typings if your TS doesn't include Serial types
-interface SerialPort {
-  open(options: { baudRate: number }): Promise<void>;
-  readable?: ReadableStream<Uint8Array>;
-  writable?: WritableStream<Uint8Array>;
-  close(): Promise<void>;
-}
-interface Navigator {
-  serial: {
-    requestPort: () => Promise<SerialPort>;
-    getPorts: () => Promise<SerialPort[]>;
-  };
-}
+import { SerialPort } from "@/types/task";
 
 interface AppHeaderProps {
   baud: number;

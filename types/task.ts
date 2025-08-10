@@ -16,3 +16,17 @@ export type Task = {
   createdAt: string; // ISO
   updatedAt: string; // ISO
 };
+
+// Fallback typings if your TS doesn't include Serial types
+export interface SerialPort {
+  open(options: { baudRate: number }): Promise<void>;
+  readable?: ReadableStream<Uint8Array>;
+  writable?: WritableStream<Uint8Array>;
+  close(): Promise<void>;
+}
+export interface Navigator {
+  serial: {
+    requestPort: () => Promise<SerialPort>;
+    getPorts: () => Promise<SerialPort[]>;
+  };
+}

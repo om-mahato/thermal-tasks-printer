@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Task } from "../types/task";
+import { SerialPort, Task } from "../types/task";
 import { escposPrintTask } from "../utils/printer";
 
 export function usePrinter() {
