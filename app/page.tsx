@@ -35,6 +35,7 @@ export default function HomePage() {
     connectPrinter,
     disconnectPrinter,
     printTask,
+    isWebSerialSupported,
   } = usePrinter();
 
   // Modal state
@@ -111,6 +112,7 @@ export default function HomePage() {
         port={port}
         connectPrinter={connectPrinter}
         disconnectPrinter={disconnectPrinter}
+        isWebSerialSupported={isWebSerialSupported}
       />
 
       <SearchAndFilters

@@ -8,6 +8,7 @@ interface AppHeaderProps {
   port: SerialPort | null;
   connectPrinter: () => Promise<void>;
   disconnectPrinter: () => Promise<void>;
+  isWebSerialSupported: boolean;
 }
 
 export function AppHeader({
@@ -18,6 +19,7 @@ export function AppHeader({
   port,
   connectPrinter,
   disconnectPrinter,
+  isWebSerialSupported,
 }: AppHeaderProps) {
   return (
     <header className="sticky top-0 z-10 backdrop-blur bg-white/70 border-b border-slate-200">
@@ -35,6 +37,13 @@ export function AppHeader({
         </div>
 
         <div className="ml-auto flex items-center gap-3">
+          {!isWebSerialSupported && (
+            <div className="text-xs text-amber-600 bg-amber-50 px-2 py-1 rounded-lg border border-amber-200">
+              ⚠️ Web Serial API not available. Use Chrome/Edge on
+              HTTPS/localhost.
+            </div>
+          )}
+
           <div className="flex items-center gap-2">
             <label className="text-xs text-slate-600">Baud</label>
             <select
@@ -61,7 +70,17 @@ export function AppHeader({
           {!port ? (
             <button
               onClick={connectPrinter}
-              className="rounded-xl bg-black text-white px-3 py-2 text-sm hover:opacity-90"
+              disabled={!isWebSerialSupported}
+              className={`rounded-xl px-3 py-2 text-sm ${
+                isWebSerialSupported
+                  ? "bg-black text-white hover:opacity-90"
+                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
+              }`}
+              title={
+                !isWebSerialSupported
+                  ? "Web Serial API not supported in this browser/environment"
+                  : "Connect to thermal printer"
+              }
             >
               Connect Printer
             </button>
